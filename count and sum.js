@@ -1,13 +1,13 @@
 function countPositivesSumNegatives(input) {
-  let negativeNumbers = [];
-  let negativeNumbersSum = 0;
-  let positiveNumbersCount = 0;
-  
+  let count = 0, sum = 0;
   if (input) {
-    negativeNumbers = input.filter(n => n < 0);
-    negativeNumbersSum = negativeNumbers.reduce((acc, num) => acc + num, 0);
-    positiveNumbersCount = input.filter(n => n > 0).length; 
+    for (let i = 0; i < input.length; i++) {
+      if (input[i] < 0) {
+        sum += input[i];
+      } else if (input[i] > 0) {
+        count += 1;
+      }
+    }
   }
-  
-  return (!!negativeNumbersSum || !!positiveNumbersCount) ? [positiveNumbersCount, negativeNumbersSum] : [];
+  return !!count ? [count, sum] : [];
 }
